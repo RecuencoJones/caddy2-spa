@@ -1,0 +1,2 @@
+GET http://localhost:2015/api/starships/
+Accept: application/json

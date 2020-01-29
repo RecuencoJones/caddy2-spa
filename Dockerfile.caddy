@@ -1,0 +1,10 @@
+FROM debian
+
+# install caddy release
+ADD https://github.com/caddyserver/caddy/releases/download/v2.0.0-beta.13/caddy2_beta13_linux_amd64 /bin/caddy
+RUN chmod +x /bin/caddy
+
+# install root CA certificates
+RUN apt update -y && apt install -y ca-certificates
+
+CMD [ "caddy", "run" ]

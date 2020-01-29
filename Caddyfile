@@ -1,0 +1,31 @@
+(https_proxy) {
+  transport http {
+    tls
+  }
+}
+
+(sinple_page_app) {
+  try_files {path} index.html
+  file_server
+}
+
+:2015 {
+  handle /api/* {
+    reverse_proxy swapi.co:443 {
+      header_up Host swapi.co
+      import https_proxy
+    }
+  }
+
+  handle /bin/* {
+    reverse_proxy engbpjbr46ths.x.pipedream.net:443 {
+      header_up Host engbpjbr46ths.x.pipedream.net
+      import https_proxy
+    }
+  }
+
+  handle {
+    root public
+    import sinple_page_app
+  }
+}
