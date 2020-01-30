@@ -26,6 +26,13 @@ set +a
 ./caddy2 run -config Caddyfile.env
 ```
 
+Or using modules like [npm's dotenv-cli](https://www.npmjs.com/package/dotenv-cli) or [ruby's dotenv](https://github.com/bkeepers/dotenv)
+
+```
+cp .env.example .env
+dotenv ./caddy2 run -config Caddyfile.env
+```
+
 # Run with docker
 
 ```
